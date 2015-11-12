@@ -1,0 +1,27 @@
+ public int threeSumClosest(int[] nums, int target) {
+    	int sum = 0, inter = Integer.MAX_VALUE;
+		int result = 0;
+		Arrays.sort(nums);
+		for (int i = 0; i < nums.length; i++) {
+			for (int j1 = i + 1, j2 = nums.length - 1; j1 < j2;) {
+				sum = nums[i] + nums[j1] + nums[j2];
+				if (sum < target) {
+					if (Math.abs(target - sum) < inter) {
+						result = sum;
+						inter = Math.abs(target - sum);
+					}
+					j1++;
+				} else {
+					if (target == sum)
+						return sum;
+					else if (Math.abs(target - sum) < inter) {
+						result = sum;
+						inter = Math.abs(target - sum);
+					}
+					j2--;
+				}
+			}
+		}
+		return result;
+
+    }
