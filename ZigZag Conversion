@@ -1,0 +1,18 @@
+if (numRows == 1 || s.length() == numRows)
+			return s;
+		StringBuilder result = new StringBuilder();
+		int interval = 2 * numRows - 2;
+		int index = 0, j = 0, tag = 0;
+		for (int i = 1; i <= numRows; i++) {
+			index = i;
+			while (index <= s.length()) {
+				if (tag != index)
+					result.append(s.charAt(index - 1));
+				tag = index;
+				index += j;
+				j = 2 * numRows - 2 - j;
+			}
+			interval = interval == 2 ? 2 * numRows - 2 : interval - 2;
+			j = interval;
+		}
+		return result.toString();
