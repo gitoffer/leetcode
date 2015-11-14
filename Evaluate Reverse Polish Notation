@@ -1,0 +1,37 @@
+ public int evalRPN(String[] tokens) {
+        int k, j;
+		char c;
+		Stack<String> st = new Stack<String>();
+		for (int i = 0; i < tokens.length; i++) {
+			if (tokens[i].length() > 1) {
+				c = tokens[i].charAt(1);
+			} else
+				c = tokens[i].charAt(0);
+			switch (c) {
+			case '+':
+				k = Integer.parseInt(st.pop());
+				j = Integer.parseInt(st.pop());
+				st.push(k + j + "");
+				break;
+			case '-':
+				k = Integer.parseInt(st.pop());
+				j = Integer.parseInt(st.pop());
+				st.push(j - k + "");
+				break;
+			case '*':
+				k = Integer.parseInt(st.pop());
+				j = Integer.parseInt(st.pop());
+				st.push(k * j + "");
+				break;
+			case '/':
+				k = Integer.parseInt(st.pop());
+				j = Integer.parseInt(st.pop());
+				st.push(j / k + "");
+				break;
+			default:
+				st.push(tokens[i]);
+			}
+
+		}
+		return Integer.parseInt(st.pop());
+    }
