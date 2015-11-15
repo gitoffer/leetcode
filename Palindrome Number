@@ -1,0 +1,12 @@
+  public boolean isPalindrome(int x) {
+        	if(x<0)
+			return false;
+		int j = x, k = 0;
+		while (j != 0) {
+			k = k * 10;
+			k = k + (j % 10);
+			j = j / 10;
+		}
+		System.out.println(k);
+		return x == k;
+    }
