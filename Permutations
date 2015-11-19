@@ -1,0 +1,25 @@
+ public List<List<Integer>> permute(int[] nums) {
+		List<List<Integer>> list = new ArrayList<List<Integer>>();
+		permutation(0, nums, list);
+		return list;
+	}
+
+	public void permutation(int i, int[] num, List<List<Integer>> list) {
+		if (i == num.length) {
+			List<Integer> list1 = new ArrayList<Integer>();
+			for (int j = 0; j < i; j++) {
+				list1.add(num[j]);
+			}
+			list.add(list1);
+			return;
+		}
+		for (int j = i; j < num.length; j++) {
+			int tmp = num[i];
+			num[i] = num[j];
+			num[j] = tmp;
+			permutation(i + 1, num, list);
+			tmp = num[i];
+			num[i] = num[j];
+			num[j] = tmp;
+		}
+	}
