@@ -1,0 +1,13 @@
+ public int addDigits(int num) {
+        int i, temp;
+		while (num >= 10) {
+			temp = num;
+			i = 0;
+			while (temp != 0) {
+				i += temp % 10;
+				temp = temp / 10;
+			}
+			num = i;
+		}
+		return num;
+    }
