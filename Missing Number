@@ -1,0 +1,17 @@
+ public int missingNumber(int[] nums) {
+     if (nums.length == 0)
+			return 0;
+		int max = 0, min = nums[0], sum = 0;
+		for (int i = 0; i < nums.length; i++) {
+			sum += nums[i];
+			max = Math.max(max, nums[i]);
+			min = Math.min(min, nums[i]);
+		}
+		int correctSum = (max + min) * (max - min + 1) / 2;
+		if (correctSum == sum)
+			if (min != 0)
+				return 0;
+			else
+				return max + 1;
+		return correctSum - sum;
+    }
