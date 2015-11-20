@@ -1,0 +1,20 @@
+public boolean wordPattern(String pattern, String str) {
+    HashMap<Character, String> hm = new HashMap<Character, String>();
+		String[] strings = str.split(" ");
+		String match = "";
+		if (strings.length != pattern.length())
+			return false;
+		for (int i = 0; i < pattern.length(); i++) {
+			match = hm.get(pattern.charAt(i));
+			if (match == null) {
+				if (hm.containsValue(strings[i]))
+					return false;
+				hm.put(pattern.charAt(i), strings[i]);
+
+			} else {
+				if (!match.equals(strings[i]))
+					return false;
+			}
+		}
+		return true;   
+		}
