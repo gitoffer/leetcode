@@ -1,0 +1,10 @@
+public int climbStairs(int n) {
+        if (n == 1 || n == 2)
+			return n;
+		int er[] = new int[n];
+		er[0] = 1;
+		er[1] = 2;
+		for (int i = 2; i < n; i++)
+			er[i] = er[i - 1] + er[i - 2];
+		return er[n - 1];
+    }
