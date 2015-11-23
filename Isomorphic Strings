@@ -1,0 +1,23 @@
+public boolean isIsomorphic(String s, String t) {
+       HashMap<Character, Integer> hm1 = new HashMap<Character, Integer>();
+		HashMap<Character, Integer> hm2 = new HashMap<Character, Integer>();
+		if (s.length() != t.length()) {
+			return false;
+		}
+		for (int i = 0; i < s.length(); i++) {
+			if (hm1.get(s.charAt(i)) != null) {
+				if (hm2.get(t.charAt(i)) != null) {
+					if (!(hm1.get(s.charAt(i)).equals(hm2.get(t.charAt(i)))))
+						return false;
+				} else
+					return false;
+			} else {
+				if (hm2.get(t.charAt(i)) != null) {
+					return false;
+				}
+			}
+			hm1.put(s.charAt(i), i);
+			hm2.put(t.charAt(i), i);
+		}
+		return true;
+    }
