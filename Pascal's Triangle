@@ -1,0 +1,27 @@
+ public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> list = new ArrayList<List<Integer>>();
+		List<Integer> iList = new ArrayList<Integer>();
+		if (numRows == 0)
+			return list;
+		iList.add(1);
+		list.add(iList);
+		if (numRows == 1)
+			return list;
+		int i = 2, j, k;
+		while (i <= numRows) {
+			List<Integer> dlist = list.get(i - 2);
+			List<Integer> nList = new ArrayList<Integer>();
+			nList.add(1);
+			j = 0;
+			k = 1;
+			while (nList.size() < i - 1) {
+				nList.add(dlist.get(j) + dlist.get(k));
+				j++;
+				k++;
+			}
+			nList.add(1);
+			list.add(nList);
+			i++;
+		}
+		return list;
+    }
