@@ -1,0 +1,18 @@
+  int numBull = 0;
+		int numCow = 0;
+		int[] mark = new int[10];
+		for (int i = 0; i < secret.length(); i++) {
+			if (secret.charAt(i) == guess.charAt(i)) {
+				numBull++;
+			} else {
+				if (mark[secret.charAt(i) - '0']++ < 0) {
+					numCow++;
+				}
+				if (mark[guess.charAt(i) - '0']-- > 0) {
+					numCow++;
+				}
+			}
+		}
+		String res = String.valueOf(numBull) + "A" + String.valueOf(numCow)
+				+ "B";
+		return res;
