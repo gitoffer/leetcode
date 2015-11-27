@@ -1,0 +1,24 @@
+ public boolean isHappy(int n) {
+         if( n ==1 || n==-1){
+            return true;
+            }
+
+        HashSet<Integer> hs = new HashSet<>();
+
+        int sum=0; 
+
+        while(true){
+            while(n != 0){
+                sum = sum + (n%10)*(n%10);
+                n=n/10;
+            }
+            if(sum == 1){
+                return true;
+            }
+            if(!hs.add(sum)){
+                return false;
+            }
+            n=sum;
+            sum=0;
+        }
+    }
