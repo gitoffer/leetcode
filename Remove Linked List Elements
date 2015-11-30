@@ -1,0 +1,15 @@
+  public ListNode removeElements(ListNode head, int val) {
+
+		ListNode newNode = new ListNode(0);
+		ListNode pre = newNode;
+
+		while (head != null) {
+			if (head.val != val) {
+				pre.next = head;
+				pre = pre.next;
+			}
+			head = head.next;
+		}
+		pre.next = null;
+		return newNode.next;
+    }
