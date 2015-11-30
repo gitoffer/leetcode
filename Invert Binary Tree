@@ -1,0 +1,12 @@
+  public TreeNode invertTree(TreeNode root) {
+       if (root == null)
+			return root;
+		invertTree(root.left);
+		invertTree(root.right);
+
+		TreeNode node = new TreeNode(0);
+		node = root.left;
+		root.left = root.right;
+		root.right = node;
+		return root;
+    }
