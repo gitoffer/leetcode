@@ -1,0 +1,10 @@
+ public int titleToNumber(String s) {
+       int sum = 0;
+		int i = s.length() - 1, bit = 1;
+		while (i >= 0) {
+			sum += (s.charAt(i) - 64) * bit;
+			bit *= 26;
+			i--;
+		}
+		return sum;
+    }
