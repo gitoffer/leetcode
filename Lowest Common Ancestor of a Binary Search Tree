@@ -1,0 +1,24 @@
+	public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p,
+			TreeNode q) {
+		List<TreeNode> plist = new ArrayList<TreeNode>();
+		List<TreeNode> qlist = new ArrayList<TreeNode>();
+		find(root, plist, p);
+		find(root, qlist, q);
+if (plist.retainAll(qlist)) {
+			return plist.get(plist.size() - 1);
+		} else {
+			qlist.retainAll(plist);
+			return qlist.get(qlist.size() - 1);
+		}
+	}
+
+	public static void find(TreeNode root, List<TreeNode> list, TreeNode p) {
+		if (root == null)
+			return;
+		if (!list.contains(p))
+			list.add(root);
+		find(root.left, list, p);
+		find(root.right, list, p);
+		if (!list.contains(p))
+			list.remove(list.size() - 1);
+	}
