@@ -1,0 +1,25 @@
+ public ListNode insertionSortList(ListNode head) {
+      ListNode result = new ListNode(-1);
+		ListNode temp = result.next;
+		ListNode pre = result;
+		while (head != null) {
+			ListNode save = head.next;
+			while (temp != null && head.val > temp.val) {
+				temp = temp.next;
+				pre = pre.next;
+			}
+			if (temp == null) {
+				save = head.next;
+				pre.next = head;
+				pre.next.next = null;
+				head = save;
+			} else {
+				head.next = temp;
+				pre.next = head;
+			}
+			temp = result.next;
+			pre = result;
+			head = save;
+		}
+		return result.next;
+    }
